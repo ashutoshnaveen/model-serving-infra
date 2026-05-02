@@ -40,7 +40,7 @@ class GenerateRequest(BaseModel):
     )
     stream: bool = Field(
         default=False,
-        description="Whether to stream the response token by token (not yet implemented)",
+        description="Stream the response token by token via SSE",
     )
 
     model_config = {"json_schema_extra": {
