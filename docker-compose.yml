@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  inference-server:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - ENGINE_MODE=naive
+      - MODEL_NAME=gpt2
+    volumes:
+      - model-cache:/root/.cache/huggingface
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+    restart: unless-stopped
+
+  # Batching mode (alternative profile)
+  inference-server-batching:
+    build: .
+    ports:
+      - "8001:8000"
+    environment:
+      - ENGINE_MODE=batching
+      - MODEL_NAME=gpt2
+    volumes:
+      - model-cache:/root/.cache/huggingface
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+    profiles:
+      - batching
+
+volumes:
+  model-cache:
