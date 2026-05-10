@@ -159,6 +159,11 @@ model-serving-infra/
 └── Makefile
 ```
 
+## Documentation
+
+- **[Architecture](docs/architecture.md)** — System diagrams (Mermaid), request flow, KV-cache visualization
+- **[Design Decisions](docs/design-decisions.md)** — Why GPT-2, block-based cache, SSE over WebSockets, etc.
+
 ## Key Concepts
 
 ### PagedAttention-style Memory Management
